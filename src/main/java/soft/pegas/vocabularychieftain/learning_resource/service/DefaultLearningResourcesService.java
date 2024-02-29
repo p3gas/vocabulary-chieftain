@@ -21,10 +21,11 @@ public class DefaultLearningResourcesService implements LearningResourcesService
 
     @Override
     public LearningResourceDTO create(byte[] file, String name, String linkToAudio) {
-        // storageService.save
+        // filename = storageService.save
         var learningResource = new LearningResource();
         learningResource.setName(name);
         learningResource.setLinkToAudio(linkToAudio);
+//        learningResource.setFileName(filename);
 
         LearningResource saved = learningResourcesRepository.save(learningResource);
 

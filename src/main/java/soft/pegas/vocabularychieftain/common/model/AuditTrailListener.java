@@ -1,4 +1,4 @@
-package soft.pegas.vocabularychieftain.misc.model;
+package soft.pegas.vocabularychieftain.common.model;
 
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;

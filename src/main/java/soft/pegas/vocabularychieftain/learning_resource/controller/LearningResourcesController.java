@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import soft.pegas.vocabularychieftain.learning_resource.dto.LearningResourceDTO;
 import soft.pegas.vocabularychieftain.learning_resource.service.LearningResourcesService;
-import soft.pegas.vocabularychieftain.misc.url.UrlConst;
+import soft.pegas.vocabularychieftain.common.url.UrlConst;
 
 import java.io.IOException;
 import java.util.List;

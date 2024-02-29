@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import soft.pegas.vocabularychieftain.learning_resource.dto.LearningResourceDTO;
-import soft.pegas.vocabularychieftain.misc.model.BaseModel;
+import soft.pegas.vocabularychieftain.common.model.BaseModel;
 import soft.pegas.vocabularychieftain.user.model.User;
 
 @Entity

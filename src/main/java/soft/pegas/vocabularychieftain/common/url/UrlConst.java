@@ -1,4 +1,4 @@
-package soft.pegas.vocabularychieftain.misc.url;
+package soft.pegas.vocabularychieftain.common.url;
 
 public class UrlConst {
 
