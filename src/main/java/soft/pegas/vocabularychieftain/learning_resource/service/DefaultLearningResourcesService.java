@@ -1,20 +1,34 @@
 package soft.pegas.vocabularychieftain.learning_resource.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import soft.pegas.vocabularychieftain.learning_resource.dto.LearningResourceDTO;
+import soft.pegas.vocabularychieftain.learning_resource.model.LearningResource;
+import soft.pegas.vocabularychieftain.learning_resource.repository.LearningResourcesRepository;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class DefaultLearningResourcesService implements LearningResourcesService {
+
+    private final LearningResourcesRepository learningResourcesRepository;
 
     @Override
     public List<LearningResourceDTO> getAll() {
-        return null;
+        return learningResourcesRepository.findAll().stream().map(LearningResource::toDTO).toList();
     }
 
     @Override
-    public LearningResourceDTO create() {
-        return null;
+    public LearningResourceDTO create(byte[] file, String name, String linkToAudio) {
+        // filename = storageService.save
+        var learningResource = new LearningResource();
+        learningResource.setName(name);
+        learningResource.setLinkToAudio(linkToAudio);
+//        learningResource.setFileName(filename);
+
+        LearningResource saved = learningResourcesRepository.save(learningResource);
+
+        return saved.toDTO();
     }
 }

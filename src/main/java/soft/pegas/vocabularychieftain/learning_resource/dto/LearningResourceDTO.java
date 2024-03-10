@@ -1,7 +1,9 @@
 package soft.pegas.vocabularychieftain.learning_resource.dto;
 
+import java.util.UUID;
+
 public record LearningResourceDTO(
-        Long id,
+        UUID id,
         String name,
         String linkToAudio,
         String fileName) {

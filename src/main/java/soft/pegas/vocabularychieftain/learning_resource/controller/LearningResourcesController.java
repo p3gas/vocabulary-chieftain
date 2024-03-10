@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import soft.pegas.vocabularychieftain.learning_resource.dto.LearningResourceDTO;
 import soft.pegas.vocabularychieftain.learning_resource.service.LearningResourcesService;
-import soft.pegas.vocabularychieftain.misc.url.UrlConst;
+import soft.pegas.vocabularychieftain.common.url.UrlConst;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,7 +24,8 @@ public class LearningResourcesController {
     }
 
     @PostMapping
-    public LearningResourceDTO create(@RequestParam("file") MultipartFile file, @RequestParam("name") String name ) {
-        return null;
+    public LearningResourceDTO create(@RequestParam("file") MultipartFile file, @RequestParam("name") String name,
+                                      @RequestParam("linkToAudio") String linkToAudio) throws IOException {
+        return learningResourcesService.create(file.getBytes(), name, linkToAudio);
     }
 }

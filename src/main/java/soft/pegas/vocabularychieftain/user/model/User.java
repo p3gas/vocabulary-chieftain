@@ -1,23 +1,16 @@
 package soft.pegas.vocabularychieftain.user.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.UUID;
+import soft.pegas.vocabularychieftain.common.model.BaseModel;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
-public class User {
-
-    @Id
-    @GeneratedValue
-    private UUID id;
+public class User extends BaseModel {
 
     private String firstName;
 

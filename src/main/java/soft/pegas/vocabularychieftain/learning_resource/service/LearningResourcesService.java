@@ -8,5 +8,5 @@ public interface LearningResourcesService {
 
     List<LearningResourceDTO> getAll();
 
-    LearningResourceDTO create();
+    LearningResourceDTO create(byte[] file, String name, String linkToAudio);
 }
