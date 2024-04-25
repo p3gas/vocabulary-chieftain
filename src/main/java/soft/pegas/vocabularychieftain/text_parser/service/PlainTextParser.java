@@ -1,10 +1,10 @@
-package soft.pegas.vocabularychieftain.text_parser.model;
-
-import soft.pegas.vocabularychieftain.text_parser.service.TextParser;
+package soft.pegas.vocabularychieftain.text_parser.service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+
+import soft.pegas.vocabularychieftain.text_parser.model.FileType;
 
 public class PlainTextParser implements TextParser {
 

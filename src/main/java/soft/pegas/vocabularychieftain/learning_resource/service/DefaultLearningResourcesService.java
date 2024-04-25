@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import soft.pegas.vocabularychieftain.learning_resource.dto.LearningResourceDTO;
 import soft.pegas.vocabularychieftain.learning_resource.model.LearningResource;
 import soft.pegas.vocabularychieftain.learning_resource.repository.LearningResourcesRepository;
+import soft.pegas.vocabularychieftain.storage.service.StorageService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -13,6 +15,7 @@ import java.util.List;
 public class DefaultLearningResourcesService implements LearningResourcesService {
 
     private final LearningResourcesRepository learningResourcesRepository;
+    private final StorageService storageService;
 
     @Override
     public List<LearningResourceDTO> getAll() {
@@ -21,11 +24,17 @@ public class DefaultLearningResourcesService implements LearningResourcesService
 
     @Override
     public LearningResourceDTO create(byte[] file, String name, String linkToAudio) {
-        // filename = storageService.save
+        String filename;
+        try{
+            filename = storageService.saveFile(file);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("can't save file");
+        }
+        
         var learningResource = new LearningResource();
         learningResource.setName(name);
         learningResource.setLinkToAudio(linkToAudio);
-//        learningResource.setFileName(filename);
+        learningResource.setFileName(filename);
 
         LearningResource saved = learningResourcesRepository.save(learningResource);
 
