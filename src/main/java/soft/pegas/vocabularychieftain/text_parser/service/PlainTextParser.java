@@ -4,8 +4,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import soft.pegas.vocabularychieftain.text_parser.model.FileType;
 
+@Component
 public class PlainTextParser implements TextParser {
 
     @Override

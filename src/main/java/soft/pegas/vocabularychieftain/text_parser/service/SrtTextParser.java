@@ -4,8 +4,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import soft.pegas.vocabularychieftain.text_parser.model.FileType;
 
+@Component
 public class SrtTextParser implements TextParser {
 
     @Override
@@ -27,8 +29,9 @@ public class SrtTextParser implements TextParser {
                 continue;
             }
 
-            if (!originalLines[i].equals("")) {
-                originalText.append(" " + originalLines[i]);
+            if (!originalLines[i].isEmpty()) {
+                originalText.append(" ");
+                originalText.append(originalLines[i]);
             }
         }
 

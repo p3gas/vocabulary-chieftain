@@ -1,15 +1,14 @@
 package soft.pegas.vocabularychieftain.learning_resource.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import soft.pegas.vocabularychieftain.learning_resource.dto.LearningResourceDTO;
 import soft.pegas.vocabularychieftain.common.model.BaseModel;
+import soft.pegas.vocabularychieftain.text_parser.model.FileType;
 import soft.pegas.vocabularychieftain.user.model.User;
+
+import java.util.List;
 
 @Entity
 @Table(name = "learning_resources")
@@ -19,17 +18,23 @@ public class LearningResource extends BaseModel {
 
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    private FileType extension;
+
     private String linkToAudio;
 
     private String fileName;
 
     private boolean availableForPublic;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "creator_id")
     private User creator;
 
-    public LearningResourceDTO toDTO() {
-        return new LearningResourceDTO(id, name, linkToAudio, fileName);
+    @OneToMany(mappedBy = "learning_resource_id")
+    private List<Sentence> sentences;
+
+    public LearningResourceDto toDto() {
+        return new LearningResourceDto(id, name, linkToAudio, fileName, availableForPublic);
     }
 }

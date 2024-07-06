@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import soft.pegas.vocabularychieftain.common.url.UrlConst;
-import soft.pegas.vocabularychieftain.user.model.User;
-import soft.pegas.vocabularychieftain.user.repository.UserRepository;
+import soft.pegas.vocabularychieftain.user.model.UserDto;
+import soft.pegas.vocabularychieftain.user.service.UserService;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UsersController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping("/all")
-    List<User> getUsers() {
-        return userRepository.findAll();
+    List<UserDto> getUsers() {
+        return userService.getAll();
     }
 }
